@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='css/style.css')}}"
+  />
+  <title>Classificador</title>
+</head>
+<body>
+  <form action="/" method="post" class="form-container">
+    <h1>Escolha seu Classificador e veja os resultados</h1>
+    <select
+      class="form-select form-select-lg mb-3"
+      aria-label="Large select example"
+      name="classifier"
+    >
+      <option selected>Escolha o Classificador</option>
+      <option value="1">DecisionTreeClassifier</option>
+      <option value="2">RandomForestClassifier</option>
+      <option value="3">MLPClassifier</option>
+      <option value="4">KNeighborsClassifier</option>
+    </select>
+    <button class="btn btn-primary" type="submit">Escolher</button>
+  </form>
+  {% if classificador %} 
+    {% if classificador == "DecisionTreeClassifier" %}
+      <div class="atributos-container">
+        <h2>Classificador DecisionTreeClassifier</h2>
+        <form action="/treinar/1" method="post">
+          <label for="req1">max_depth</label>
+          <input type="text" name="req1" />
+
+          <label for="req2">random_state</label>
+          <input type="text" name="req2" />
+
+          <label for="req3">max_leaf_nodes</label>
+          <input type="text" name="req3" />
+          <button class="btn btn-primary" type="submit">Treinar</button>
+        </form>
+      </div>
+    {% endif %} 
+    {% if classificador == "RandomForestClassifier" %}
+      <div class="atributos-container">
+        <h2>Classificador RandomForestClassifier</h2>
+        <form action="/treinar/2" method="post">
+          <label for="req1">n_estimators</label>
+          <input type="text" name="req1" />
+
+          <label for="req2">max_depth</label>
+          <input type="text" name="req2" />
+
+          <label for="req3">max_leaf_nodes </label>
+          <input type="text" name="req3" />
+          <button class="btn btn-primary" type="submit">Treinar</button>
+        </form>
+      </div>
+    {% endif %} 
+    {% if classificador == "MLPClassifier" %}
+      <div class="atributos-container">
+        <h2>Classificador MLPClassifier</h2>
+        <form action="/treinar/3" method="post">
+          <label for="req1">hidden_layer_sizes</label>
+          <input type="text" name="req1" />
+
+          <label for="req2">random_state</label>
+          <input type="text" name="req2" />
+
+          <label for="req3">max_iter</label>
+          <input type="text" name="req3" />
+
+          <button class="btn btn-primary" type="submit">Treinar</button>
+        </form>
+      </div>
+    {% endif %} 
+    {% if classificador == "KNeighborsClassifier" %}
+      <div class="atributos-container">
+        <h2>Classificador KNeighborsClassifier</h2>
+        <form action="/treinar/4" method="post">
+          <label for="req1">n_neighbors</label>
+          <input type="text" name="req1" />
+
+          <label for="req2">leaf_size</label>
+          <input type="text" name="req2" />
+
+          <label for="req3">power_parameter</label>
+          <input type="text" name="req3" />
+
+          <button class="btn btn-primary" type="submit">Treinar</button>
+        </form>
+      </div>
+    {% endif %}
+  {% endif %}
+  <footer>
+    <p>&copy;2023 - Todos os direitos reservados</p>
+  </footer>
+  <script>
+    document.querySelector("select").addEventListener("change", function () {
+      var selectedValue = this.value;
+    });
+  </script>
+</body>
+</html>

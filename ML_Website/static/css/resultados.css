@@ -1,0 +1,151 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); /* Ajuste as cores conforme necessário */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s infinite;
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  
+nav {
+    background-color: #333;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
+}
+  
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #555;
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+  
+nav a:hover {
+    background-color: #777; /* Altera a cor ao passar o mouse */
+}
+  
+h2.h2-result {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+  
+.results-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    perspective: 1000px; /* Define a perspectiva para efeitos 3D */
+}
+  
+  
+.results-container div {
+    text-align: center;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+    position: relative;
+}
+  
+.results-container:hover div {
+    transform: rotateY(0deg) scale(1.1);
+
+}
+  
+.results-container:hover div:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transform: translateZ(-20px); /* Adiciona uma camada translúcida para o efeito */
+}
+  
+.results-container:hover div:hover {
+    transform: rotateY(calc((var(--mouse-x) - var(--elem-x)) / var(--elem-width) * 45deg)) scale(1.1);
+}
+    
+
+.results-container div:nth-child(even) {
+    transform-origin: left center; /* Define o ponto de origem à esquerda */
+}
+  
+.results-container div:nth-child(odd) {
+    transform-origin: right center; /* Define o ponto de origem à direita */
+}
+  
+.results-container:hover div {
+    transform: rotateY(15deg) scale(1.1); /* Rotação e escala ao passar o mouse */
+}
+  
+.results-container:hover div:nth-child(odd) {
+    transform: rotateY(-15deg) scale(1.1); /* Rotação e escala ao passar o mouse */
+}
+
+.results-container:hover div:nth-child(odd) {
+    transform: rotateY(15deg) scale(1.1);
+}
+  
+label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #191717; /* Adicionando cor ao label */
+}
+  
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Adicionando borda aos inputs */
+    border-radius: 5px; /* Adicionando borda arredondada */
+}
+  
+  /* Adicionando sombra ao container no hover para dar uma sensação de elevação */
+.results-container:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+}
+  
+input:focus {
+    border-color: #555; /* Altera a cor da borda ao receber foco */
+}
+  
+img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra à imagem */
+}
+  
+footer {
+    background-color: #1a1919;
+    color: #fff;
+    padding: 0;
+    height: 40px;
+    text-align: center;
+    position: fixed;
+    bottom: 0; /* Fixa o rodapé na parte inferior da página */
+    width: 100%; /* Faz o rodapé ocupar a largura total da tela */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
+}

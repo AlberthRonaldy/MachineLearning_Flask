@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='css/resultados.css')}}"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+  <title>Resultados</title>
+</head>
+<body class="body-results">
+  <nav>
+    <a href="{{url_for('home')}}">Voltar</a>
+  </nav>
+  <h2 class="h2-result">{{clf_name}}</h2>
+  <div class="results-container">
+    <div>
+      <label for="accuracy">ACCURACY</label>
+      <input type="text" name="accuracy" value="{{accuracy}}" />
+      <label for="f1score">F1-SCORE</label>
+      <input type="text" name="f1score" value="{{f1_score}}" />
+    </div>
+    <div>
+      <img
+        src="{{url_for('static', filename='graficos/' + url_img)}}"
+        alt="Meu Grafico"
+      />
+    </div>
+  </div>
+  <footer>
+    <p>&copy;2023 - Todos os direitos reservados</p>
+  </footer>
+  <script>
+    document.querySelector(".results-container").addEventListener("mousemove", function (e) {
+      let x = e.clientX - this.offsetLeft; // Posição do mouse em relação à esquerda do elemento
+      let width = this.offsetWidth; // Largura do elemento
+      this.style.setProperty("--mouse-x", x + "px");
+      this.style.setProperty("--elem-x", width / 2 + "px");
+      this.style.setProperty("--elem-width", width + "px");
+    });
+  </script>
+</body>
+</html>
